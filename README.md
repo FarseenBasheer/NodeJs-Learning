@@ -74,3 +74,7 @@ PUT - To send data and update
 DELETE - Delete data
 
 Form action method. If we didn't give method in form, GET is used in default. Using GET will show the data in the url like ?fname=Farseen. So we send using POST.
+
+Express - It is a framework for nodejs to make node easier. We use MVC architecture here. We also have a module express generator which we will use later which separates the module and make it MVC. It is not from core library so we have to install it separately like this.
+To install express,
+npm install express
