@@ -51,3 +51,11 @@ no need of save. Save is used in the older versions
 
 we will push only the package.json and package-lock.json. Will not push the node modules.
 Then when running the project run 'npm install' will install all the dependencies.
+
+Server with port using http. You can access it in http://localhost:port_number/
+
+2 arguments passed - res and req
+req - request object contains the data of the system that the user uses to call that server
+res contains the response of that request
+
+The changes made in the file will not work until the running port is closed in the terminal using ctrl+C. After that inorder to reflect the changes that we made, run the file again using node filename. When nothing is running in the terminal, we can't access that site.
