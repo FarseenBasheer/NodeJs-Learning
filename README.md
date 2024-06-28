@@ -59,3 +59,18 @@ req - request object contains the data of the system that the user uses to call 
 res contains the response of that request
 
 The changes made in the file will not work until the running port is closed in the terminal using ctrl+C. After that inorder to reflect the changes that we made, run the file again using node filename. When nothing is running in the terminal, we can't access that site.
+
+http://www.facebook.com
+here facebook.com is the host
+
+localhost:7000/ this is the host in our case (local)
+
+req.url === '/' -> It means it will be the host itself. localhost:7000
+
+http method in web request
+GET - To get data by giving a request to web. From client side give request to server and get data
+POST - To send data to server
+PUT - To send data and update
+DELETE - Delete data
+
+Form action method. If we didn't give method in form, GET is used in default. Using GET will show the data in the url like ?fname=Farseen. So we send using POST.
