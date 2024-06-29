@@ -36,3 +36,14 @@ But we have npm so we will not run like this. We have
   res.render - render function will check the views folder and took the file name without hbs ike 'index'. Because we already specified the template engine.
 
   in index.hbs syntax is {{-------}}
+
+  {{#each values}}
+this will work as a loop
+{{/each}}
+
+The padding in localhost:3000 comes from layout.hbs where the stylesheets, head, doctype, body etc given.
+
+{{{body}}} - This part will be populated with content.
+
+{{{---}}} - refer a page
+{{---}} - refer a variable
