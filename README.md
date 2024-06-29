@@ -78,3 +78,6 @@ Form action method. If we didn't give method in form, GET is used in default. Us
 Express - It is a framework for nodejs to make node easier. We use MVC architecture here. We also have a module express generator which we will use later which separates the module and make it MVC. It is not from core library so we have to install it separately like this.
 To install express,
 npm install express
+
+npm install ejs
+I created an enjs file and then passed the variables from js to ejs file similar to html and display it.
