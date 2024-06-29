@@ -18,14 +18,15 @@ app.get('/signup', function(req, res, next){
     next();
 })
 
-app.use(function(req, res){ // After all web requests processed, before giving it as a response this works.
-    console.log('end');
-})
-
 app.post('/signup',function(req,res){
+    console.log('Reached');
     // req.params.
     // req.body.
     res.send('account created');
+})
+
+app.use(function(req, res){ // After all web requests processed, before giving it as a response this works.
+    console.log('end');
 })
 
 app.get('/about',(req,res)=>res.send('About')
