@@ -5,33 +5,10 @@ var productHelpers= require('../helpers/product-helpers')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  let products=[
-    {
-      name: "IPHONE 11",
-      category: "mobile",
-      description: "This is a good phone",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtAYqQmgIlElczj3o8gOy27sWgC_-CkbHqmA&s"
-    },
-    {
-      name: "One Plus 7T",
-      category: "mobile",
-      description: "This is a good phone",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4yXNjbXvoGoyxyfHfnWlDnhCZ5unS2ewz2A&s"
-    },
-    {
-      name: "OOPO 10X",
-      category: "mobile",
-      description: "This is a good phone",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUJjHeX8s-9YC5RZQsCsgQ6pXNGv0huD42Xw&s"
-    },
-    {
-      name: "MI Note 9 Pro",
-      category: "mobile",
-      description: "This is a good phone",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxhgrw1vn4uQtGdMUNjiIBazcnkVUN1emHdg&s"
-    },
-  ];
-  res.render('admin/view-products', {admin:true, products});
+  productHelpers.getAllProducts().then((products)=>{
+    console.log(products);
+    res.render('admin/view-products', {admin:true, products});
+  });
 });
 
 router.get('/add-product', function(req, res){

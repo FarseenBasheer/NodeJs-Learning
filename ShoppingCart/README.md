@@ -14,3 +14,8 @@ add enctype="multipart/form-data" in form
 
 npm i express-fileupload
 
+To view database: robomongo - mongodb GUI can be installed from:
+https://studio3t.com/download/
+
+
+
