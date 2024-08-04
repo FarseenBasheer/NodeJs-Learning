@@ -36,3 +36,9 @@ Login session
 search express session
 Install using:
 npm install express-session
+
+Didn't install below. But can be installed.
+I installed below module t prevent going to login page from browser back button
+npm i nocache
+
+Here, for guest users there will be no cart, they will be redirected to login page. Not real site.

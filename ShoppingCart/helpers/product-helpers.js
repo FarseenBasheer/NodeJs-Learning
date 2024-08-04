@@ -1,5 +1,7 @@
 var db=require('../config/connection');
 var collection=require('../config/collections')
+// var objectId=require('mongodb').ObjectID
+var { ObjectId } = require('mongodb');
 
 module.exports={
     addProduct:(product,callback)=>{
@@ -15,7 +17,15 @@ module.exports={
             let products= await db.get().collection(collection.PRODUCT_COLLECTION).find().toArray()
             resolve(products)
         })
+    },
+    deleteProduct:(prodId)=>{
+        return new Promise((resolve, reject)=>{
+            console.log(prodId)
+            console.log(new ObjectId(prodId))
+            db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({_id:new ObjectId(prodId)}).then((response)=>{
+                console.log(response)
+                resolve(response)
+            })
+        })
     }
-
-
 }

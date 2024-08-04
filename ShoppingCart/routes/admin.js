@@ -1,12 +1,13 @@
 var express = require('express');
 const { route } = require('./admin');
 var router = express.Router();
-var productHelpers= require('../helpers/product-helpers')
+var productHelpers= require('../helpers/product-helpers');
+const { ObjectId } = require('mongodb');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   productHelpers.getAllProducts().then((products)=>{
-    console.log(products);
+    // console.log(products);
     res.render('admin/view-products', {admin:true, products});
   });
 });
@@ -29,6 +30,19 @@ router.post('/add-product',(req,res)=>{
       }
     })
   });
+})
+
+router.get('/delete-product/:id',(req,res)=>{
+  // router.get('/delete-product/',(req,res)=>{
+  let prodId=req.params.id
+  // let prodId=req.query.id
+  // let prodName=req.query.name
+  // console.log(prodId)
+  // console.log(prodName)
+  productHelpers.deleteProduct(prodId).then((response)=>{
+    res.redirect('/admin/')
+  })
+
 })
 
 module.exports = router;
