@@ -2,6 +2,7 @@ var db=require('../config/connection');
 var collection=require('../config/collections')
 // var objectId=require('mongodb').ObjectID
 var { ObjectId } = require('mongodb');
+const { response } = require('../app');
 
 module.exports={
     addProduct:(product,callback)=>{
@@ -25,6 +26,28 @@ module.exports={
             db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({_id:new ObjectId(prodId)}).then((response)=>{
                 console.log(response)
                 resolve(response)
+            })
+        })
+    },
+    getProductDetails:(prodId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:new ObjectId(prodId)}).then((product)=>{
+                resolve(product)
+            })
+        })
+    },
+    updateProduct:(prodId, prodDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_COLLECTION)
+            .updateOne({_id:new ObjectId(prodId)},{
+                $set:{
+                    Name:prodDetails.Name,
+                    Description:prodDetails.Description,
+                    Price:prodDetails.Price,
+                    Category:prodDetails.Category
+                }
+            }).then((response)=>{
+                resolve()
             })
         })
     }
