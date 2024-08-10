@@ -42,3 +42,5 @@ I installed below module t prevent going to login page from browser back button
 npm i nocache
 
 Here, for guest users there will be no cart, they will be redirected to login page. Not real site.
+
+in the header, we can add bootstrap badge on cart icon
