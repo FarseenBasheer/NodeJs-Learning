@@ -48,3 +48,4 @@ in the header, we can add bootstrap badge on cart icon
 Search:
 project array element mongodb
 
+json- javascript object notation

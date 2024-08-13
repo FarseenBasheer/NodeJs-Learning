@@ -8,7 +8,7 @@ module.exports={
     addProduct:(product,callback)=>{
         // console.log(product);
         db.get().collection('product').insertOne(product).then((data)=>{
-            console.log(data)
+            // console.log(data)
             // callback(data.ops[0]._id);
             callback(data.insertedId)
         })
@@ -21,10 +21,10 @@ module.exports={
     },
     deleteProduct:(prodId)=>{
         return new Promise((resolve, reject)=>{
-            console.log(prodId)
-            console.log(new ObjectId(prodId))
+            // console.log(prodId)
+            // console.log(new ObjectId(prodId))
             db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({_id:new ObjectId(prodId)}).then((response)=>{
-                console.log(response)
+                // console.log(response)
                 resolve(response)
             })
         })
