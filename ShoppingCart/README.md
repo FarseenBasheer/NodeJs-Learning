@@ -49,3 +49,18 @@ Search:
 project array element mongodb
 
 json- javascript object notation
+
+create an account in razorpay and create api keys and then use documentation from:
+
+npm i razorpay
+
+https://www.npmjs.com/package/razorpay?activeTab=readme
+
+https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/
+node js
+
+npm i crypto
+const crypto = require('crypto')
+
+For searching and sorting in tables
+datatables.net/manual/installation
