@@ -6,7 +6,7 @@ const { route } = require('./user');
 const { response } = require('../app');
 const { log } = require('handlebars');
 const verifyLogin=(req,res,next)=>{
-  if(req.session.userLoggedIn){
+  if(req.session.loggedIn){
     next()
   }else{
     res.redirect('/login')
@@ -29,15 +29,13 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/login', (req,res)=>{
-  // console.log(req.session.user);
   // console.log(req.session.loggedIn)
-  if(req.session.user){
+  if(req.session.loggedIn){
     res.redirect('/')
   }else{
-
     res.set('Cache-Control', 'no-store');
-    res.render('user/login',{"loginError":req.session.userLoginError})
-    req.session.userLoginError=false
+    res.render('user/login',{"loginError":req.session.loginError})
+    req.session.loginError=false
   }
 })
 
@@ -48,8 +46,8 @@ router.get('/signup', (req,res)=>{
 router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
     // console.log(response);
+    req.session.loggedIn=true
     req.session.user=response
-    req.session.user.loggedIn=true
     res.redirect('/')
   })
 })
@@ -57,21 +55,19 @@ router.post('/signup',(req,res)=>{
 router.post('/login',(req, res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){
+      req.session.loggedIn=true
       req.session.user=response.user
-      req.session.user.loggedIn=true
       res.redirect('/')
     }else{
       // req.session.loginError=true
-      req.session.userLoginError="Invalid username or password"
+      req.session.loginError="Invalid username or password"
       res.redirect('/login')
     }
   })
 })
 
 router.get('/logout',(req,res)=>{
-  // req.session.destroy()
-  req.session.user=null
-  req.session.userLoggedIn=false
+  req.session.destroy()
   res.redirect('/')
 })
 
@@ -155,6 +151,7 @@ router.get('/view-order-products/:id',async(req,res)=>{
 router.post('/verify-payment',(req,res)=>{
   console.log(req.body);
   userHelpers.verifyPayment(req.body).then(()=>{
+    console.log('reached after verifypayment')
     userHelpers.changePaymentStatus(req.body['order[receipt]']).then(()=>{
       console.log('Payment Successful')
       res.json({status:true})
