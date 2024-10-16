@@ -3,7 +3,7 @@ const state={
     db:null
 }
 // const url = 'mongodb://localhost:27017';
-const uri = "mongodb+srv://farseenofficial7:y06SQ0Sv6rDNumCF@cluster0.i6hdl.mongodb.net/sample_airbnb?retryWrites=true&w=majority";
+const uri =  process.env.MONGO_URI || "mongodb+srv://farseenofficial7:y06SQ0Sv6rDNumCF@cluster0.i6hdl.mongodb.net/sample_airbnb?retryWrites=true&w=majority";
 const dbName = 'shopping';
 
 
@@ -22,7 +22,11 @@ module.exports.connect=async function(done){
     let client;
   try {
     // Connect to MongoDB asynchronously
-    client = await MongoClient.connect(url);
+    // client = await MongoClient.connect(url);
+    client = await MongoClient.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
     // console.log('Database connected');
     state.db=client.db(dbName)
     done()
