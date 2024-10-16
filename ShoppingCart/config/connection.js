@@ -2,7 +2,8 @@ const MongoClient=require('mongodb').MongoClient;
 const state={
     db:null
 }
-const url = 'mongodb://localhost:27017';
+// const url = 'mongodb://localhost:27017';
+const uri = "mongodb+srv://farseenofficial7:y06SQ0Sv6rDNumCF@cluster0.i6hdl.mongodb.net/sample_airbnb?retryWrites=true&w=majority";
 const dbName = 'shopping';
 
 
